@@ -1776,3 +1776,5 @@ Backend/node_modules/whatwg-url/lib/URLSearchParams.js
 Backend/node_modules/whatwg-url/lib/utils.js
 Backend/node_modules/whatwg-url/lib/VoidFunction.js
 Backend/.env
+Backend/node_modules/crypto/package.json
+Backend/node_modules/crypto/README.md
