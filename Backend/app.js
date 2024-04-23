@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 
 // Importer les fichiers routes
 const categorieApiRoute = require("./routes/categoriesRoutes");
+const commentaireApiRoute = require("./routes/commentairesRoutes");
 
 const port = 8090;
 
@@ -34,6 +35,7 @@ app.use(bodyParser.json());
  * Indiquer les différents urls de départs des routes
  */
 app.use("/api/categorie", categorieApiRoute);
+app.use("/api/commentaire", commentaireApiRoute);
 
 // Lancer le serveur express
 app.listen(port, () => {
