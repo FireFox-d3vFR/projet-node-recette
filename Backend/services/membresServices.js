@@ -1,10 +1,10 @@
-const Membres = require("../models/membres");
+const Membre = require("../models/membres");
 
-// Récupérer la liste des membre
+// Récupérer la liste des membres
 module.exports.getMembres = async (query) => {
   try {
-    var Membres = await Membres.find(query);
-    return Membres;
+    var membres = await Membre.find(query);
+    return membres;
   } catch (e) {
     throw Error(
       `Erreur lors de l'interrogation de toutes les catégories : ${e.message}`
@@ -13,10 +13,10 @@ module.exports.getMembres = async (query) => {
 };
 
 // Récupérer un membre suivant son id
-module.exports.getMembres = async (query) => {
+module.exports.getMembre = async (query) => {
   try {
-    var Membres = await Membres.findOne(query);
-    return Membres;
+    var membre = await Membre.findOne(query);
+    return membre;
   } catch (e) {
     throw Error(
       `Erreur lors de l'interrogation d'une catégorie : ${e.message}`
@@ -24,17 +24,17 @@ module.exports.getMembres = async (query) => {
   }
 };
 
-// Récupérer un membre suivant son adresse-mail et son mot de passe
-module.exports.getMembres = async (query) => {
-    try {
-      var Membres = await Membres.findOne(query);
-      return Membres;
-    } catch (e) {
-      throw Error(
-        `Erreur lors de l'interrogation d'une catégorie : ${e.message}`
-      );
-    }
-  };
+// // Récupérer un membre suivant son adresse-mail et son mot de passe
+// module.exports.getMembres = async (query) => {
+//     try {
+//       var Membres = await Membres.findOne(query);
+//       return Membres;
+//     } catch (e) {
+//       throw Error(
+//         `Erreur lors de l'interrogation d'une catégorie : ${e.message}`
+//       );
+//     }
+//   };
 
 // Créer un membre
 module.exports.createMembres = async (Membres) => {
