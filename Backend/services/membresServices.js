@@ -7,7 +7,7 @@ module.exports.getMembres = async (query) => {
     return membres;
   } catch (e) {
     throw Error(
-      `Erreur lors de l'interrogation de toutes les catégories : ${e.message}`
+      `Erreur lors de l'interrogation de tous les membres : ${e.message}`
     );
   }
 };
@@ -19,7 +19,7 @@ module.exports.getMembre = async (query) => {
     return membre;
   } catch (e) {
     throw Error(
-      `Erreur lors de l'interrogation d'une catégorie : ${e.message}`
+      `Erreur lors de l'interrogation d'un membre selon son id : ${e.message}`
     );
   }
 };
@@ -37,41 +37,41 @@ module.exports.getMembre = async (query) => {
 //   };
 
 // Créer un membre
-module.exports.createMembres = async (Membres) => {
+module.exports.createMembre = async (Membre) => {
   try {
-    return await Membres.save();
+    return await Membre.save();
   } catch (e) {
-    throw Error(`Erreur lors de l'enregistrement de catégorie : ${e.message}`);
+    throw Error(`Erreur lors de l'enregistrement d'un membre : ${e.message}`);
   }
 };
 
 // Mettre à jour un membre
-module.exports.updateMembres = async (query, Membres) => {
+module.exports.updateMembre = async (query, Membre) => {
   try {
-    return await Membres.updateOne(query, Membres);
+    return await Membre.updateOne(query, Membre);
   } catch (e) {
     throw Error(
-      `Erreur lors de la mise à jour de l'utilisateur : ${e.message}`
+      `Erreur lors de la mise à jour d'un membre : ${e.message}`
     );
   }
 };
 
 // Supprimer un membre
-module.exports.deleteMembres = async (query) => {
+module.exports.deleteMembre = async (query) => {
   try {
-    return await Membres.deleteOne(query);
+    return await Membre.deleteOne(query);
   } catch (e) {
-    throw Error(`Erreur lors de la suppression de la catégorie : ${e.message}`);
+    throw Error(`Erreur lors de la suppression d'un membre: ${e.message}`);
   }
 };
 
 // Supprimer un membre
 module.exports.deleteMembres = async (query) => {
   try {
-    return await Membres.deleteMany(query);
+    return await Membre.deleteMany(query);
   } catch (e) {
     throw Error(
-      `Erreur lors de la suppression de toutes les catégories : ${e.message}`
+      `Erreur lors de la suppression de tous les membres : ${e.message}`
     );
   }
 };
