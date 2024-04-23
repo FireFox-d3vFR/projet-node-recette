@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
+// Importer les fichiers routes
+const categorieApiRoute = require("./routes/categoriesRoutes");
+
 const port = 8090;
 
 // Chargement du fichier de configuration
@@ -30,6 +33,7 @@ app.use(bodyParser.json());
 /**
  * Indiquer les différents urls de départs des routes
  */
+app.use("/api/categorie", categorieApiRoute);
 
 // Lancer le serveur express
 app.listen(port, () => {
