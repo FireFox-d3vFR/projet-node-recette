@@ -4,8 +4,8 @@ const commentaireSchema = mongoose.Schema({
   author: { type: String, required: true },
   content: { type: String, required: true },
   note: { type: Number, required: true },
-  creationDate: { type: Date, required: true },
-  // idRecipe: {type: Int16Array, required: true},
+  creationDate: { type: Date, default: Date.now },
+  idRecipe: {type: mongoose.Schema.Types.ObjectId, ref: 'Recette', required: true}
 });
 
 module.exports = mongoose.model("Commentaire", commentaireSchema);

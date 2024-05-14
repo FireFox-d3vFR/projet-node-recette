@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 
 // Importer le controller
-const commentaireApiController = require("../controllers/commentairesController");
+const {getCommentaire, getCommentairesByRecipe, getCommentaires, createCommentaire, updateCommentaire,deleteCommentaire, deleteCommentaires} = require("../controllers/commentairesController");
 
-router.get("/commentaires", commentaireApiController.getCommentaires);
-router.get("/:id", commentaireApiController.getCommentaire);
-router.post("/", commentaireApiController.createCommentaire);
-router.put("/:id", commentaireApiController.updateCommentaire);
-router.delete("/:id", commentaireApiController.deleteCommentaire);
-router.delete("/", commentaireApiController.deleteCommentaires);
+router.get("/commentaires", getCommentaires);
+router.get("/by-recipe/:idRecipe", getCommentairesByRecipe);
+router.get("/:id", getCommentaire);
+router.post("/", createCommentaire);
+router.put("/:id", updateCommentaire);
+router.delete("/:id", deleteCommentaire);
+router.delete("/", deleteCommentaires);
 
 module.exports = router;

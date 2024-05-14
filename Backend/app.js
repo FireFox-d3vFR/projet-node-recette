@@ -7,6 +7,9 @@ const dotenv = require("dotenv");
 // Importer les fichiers routes
 const categorieApiRoute = require("./routes/categoriesRoutes");
 const commentaireApiRoute = require("./routes/commentairesRoutes");
+const ingredientApiRoute = require("./routes/ingredientRoutes");
+const membreRoute = require("./routes/membresRoutes");
+const recetteApiRoute = require("./routes/recettesRoutes");
 
 const port = 8090;
 
@@ -36,6 +39,9 @@ app.use(bodyParser.json());
  */
 app.use("/api/categorie", categorieApiRoute);
 app.use("/api/commentaire", commentaireApiRoute);
+app.use("/api/ingredient", ingredientApiRoute);
+app.use("/api/membre", membreRoute);
+app.use("/api/recette", recetteApiRoute);
 
 // Lancer le serveur express
 app.listen(port, () => {

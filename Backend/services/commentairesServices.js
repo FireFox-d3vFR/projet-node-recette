@@ -1,65 +1,41 @@
 const Commentaire = require("../models/commentaire");
 
 // Récupérer la liste des commentaire
-module.exports.getCommentaires = async (query) => {
-  try {
-    var commentaires = await Commentaire.find(query);
-    return commentaires;
-  } catch (e) {
-    throw Error(
-      `Erreur lors de l'interrogation de toutes les commentaires : ${e.message}`
-    );
-  }
+const getCommentaires = async (query) => {
+  return await Commentaire.find(query).populate("idRecipe");
+};
+
+// Récupérer un commentaire suivant l'id d'une recette
+const getCommentairesByRecipe = async (recipeId) => {
+  return await Commentaire.find({ idRecipe: recipeId }).populate("idRecipe");
 };
 
 // Récupérer un commentaire suivant son id
-module.exports.getCommentaire = async (query) => {
-  try {
-    var commentaire = await Commentaire.findOne(query);
-    return commentaire;
-  } catch (e) {
-    throw Error(
-      `Erreur lors de l'interrogation d'un commentaire : ${e.message}`
-    );
-  }
+const getCommentaire = async (id) => {
+  return await Commentaire.findById(id).populate("idRecipe");
 };
 
 // Créer un commentaire
-module.exports.createCommentaire = async (commentaire) => {
-  try {
-    return await commentaire.save();
-  } catch (e) {
-    throw Error(
-      `Erreur lors de l'enregistrement de commentaire : ${e.message}`
-    );
-  }
+const createCommentaire = async (commentaireData) => {
+  const commentaire = new Commentaire(commentaireData);
+  return await commentaire.save();
 };
 
 // Mettre à jour un commentaire
-module.exports.updateCommentaire = async (query, commentaire) => {
-  try {
-    return await Commentaire.updateOne(query, commentaire);
-  } catch (e) {
-    throw Error(`Erreur lors de la mise à jour du commentaire : ${e.message}`);
-  }
+const updateCommentaire = async (id, commentaireData) => {
+  return await Commentaire.findByIdAndUpdate(id, commentaireData, {
+    new: true,
+  });
 };
 
 // Supprimer un commentaire
-module.exports.deleteCommentaire = async (query) => {
-  try {
-    return await Commentaire.deleteOne(query);
-  } catch (e) {
-    throw Error(`Erreur lors de la suppression du commentaire : ${e.message}`);
-  }
+const deleteCommentaire = async (id) => {
+  return await Commentaire.findByIdAndDelete(id);
 };
 
 // Supprimer la liste des commentaires
-module.exports.deleteCommentaires = async (query) => {
-  try {
-    return await Commentaire.deleteMany(query);
-  } catch (e) {
-    throw Error(
-      `Erreur lors de la suppression de toutes les commentaires : ${e.message}`
-    );
-  }
+const deleteCommentaires = async (query) => {
+  return await Commentaire.deleteMany(query);
 };
+
+module.exports = {getCommentaire, getCommentaires, getCommentairesByRecipe, createCommentaire, updateCommentaire, deleteCommentaire, deleteCommentaires};

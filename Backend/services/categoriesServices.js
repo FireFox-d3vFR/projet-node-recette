@@ -1,65 +1,41 @@
 const Categorie = require("../models/categorie");
 
 // Récupérer la liste des catégories
-module.exports.getCategories = async (query) => {
-  try {
-    var categories = await Categorie.find(query);
-    return categories;
-  } catch (e) {
-    throw Error(
-      `Erreur lors de l'interrogation de toutes les catégories : ${e.message}`
-    );
-  }
+const getCategories = async (query) => {
+    return Categorie.find(query);
 };
 
 // Récupérer une catégorie suivant son id
-module.exports.getCategorie = async (query) => {
-  try {
-    var categorie = await Categorie.findOne(query);
-    return categorie;
-  } catch (e) {
-    throw Error(
-      `Erreur lors de l'interrogation d'une catégorie : ${e.message}`
-    );
-  }
+const getCategorie = async (id) => {
+    return Categorie.findById(id);
 };
 
 // Créer une catégorie
-module.exports.createCategorie = async (categorie) => {
-  try {
-    return await categorie.save();
-  } catch (e) {
-    throw Error(`Erreur lors de l'enregistrement de catégorie : ${e.message}`);
-  }
+const createCategorie = async (categorieData) => {
+    const categorie = new Categorie(categorieData);
+    return categorie.save();
 };
 
 // Mettre à jour une catégorie
-module.exports.updateCategorie = async (query, categorie) => {
-  try {
-    return await Categorie.updateOne(query, categorie);
-  } catch (e) {
-    throw Error(
-      `Erreur lors de la mise à jour de l'utilisateur : ${e.message}`
-    );
-  }
+const updateCategorie = async (id, categorieData) => {
+    return Categorie.findByIdAndUpdate(id, categorieData, {new: true});
 };
 
 // Supprimer une catégorie
-module.exports.deleteCategorie = async (query) => {
-  try {
-    return await Categorie.deleteOne(query);
-  } catch (e) {
-    throw Error(`Erreur lors de la suppression de la catégorie : ${e.message}`);
-  }
+const deleteCategorie = async (id) => {
+    return Categorie.findByIdAndDelete(id);
 };
 
-// Supprimer la liste des catégories
-module.exports.deleteCategories = async (query) => {
-  try {
-    return await Categorie.deleteMany(query);
-  } catch (e) {
-    throw Error(
-      `Erreur lors de la suppression de toutes les catégories : ${e.message}`
-    );
-  }
+// Supprimer la liste de catégorie
+const deleteCategories = async (query) => {
+    return Categorie.deleteMany(query);
+}
+
+module.exports = {
+    getCategories,
+    getCategorie,
+    createCategorie,
+    updateCategorie,
+    deleteCategorie,
+    deleteCategories
 };

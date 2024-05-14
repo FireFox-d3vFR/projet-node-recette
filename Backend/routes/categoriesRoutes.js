@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 // Importer le controller
-const categorieApiController = require("../controllers/categoriesController");
+const {getCategories, getCategorie, createCategorie, updateCategorie, deleteCategorie, deleteCategories} = require("../controllers/categoriesController");
 
-router.get("/categories", categorieApiController.getCategories);
-router.get("/:id", categorieApiController.getCategorie);
-router.post("/", categorieApiController.createCategorie);
-router.put("/:id", categorieApiController.updateCategorie);
-router.delete("/:id", categorieApiController.deleteCategorie);
-router.delete("/", categorieApiController.deleteCategories);
+router.get("/categories", getCategories);
+router.get("/:id", getCategorie);
+router.post("/", createCategorie);
+router.put("/:id", updateCategorie);
+router.delete("/:id", deleteCategorie);
+router.delete("/", deleteCategories);
 
 module.exports = router;
