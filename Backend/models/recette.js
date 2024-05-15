@@ -7,6 +7,7 @@ const recetteSchema = mongoose.Schema({
   creationDate: { type: Date, default: Date.now },
   idCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'Categorie', required: true},
   idMembre: {type: mongoose.Schema.Types.ObjectId, ref: 'Membre', required: true},
+  ingredients: {type: mongoose.Schema.Types.ObjectId, ref: 'IngredientRecipe'},
 });
 
 module.exports = mongoose.model("Recette", recetteSchema);
