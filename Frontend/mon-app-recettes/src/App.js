@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import './App.scss';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ListeRecettes from './components/ListeRecettes';
 import Recette from './components/Recette';
 import Home from './components/Home';
