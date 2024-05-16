@@ -1,3 +1,4 @@
+import HomePage from "../pages/HomePage/HomePage";
 import Error from "../pages/ErrorPage/ErrorPage";
 
-export { Error };
+export { HomePage, Error };
