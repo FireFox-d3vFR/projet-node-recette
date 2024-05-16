@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Recettes() {
+function ListeRecettes() {
     const [recettes, setRecettes] = useState([]);
 
     useEffect(() => {
@@ -29,4 +29,4 @@ function Recettes() {
     );
 }
 
-export default Recettes;
+export default ListeRecettes;
