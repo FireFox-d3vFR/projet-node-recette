@@ -269,8 +269,18 @@ body {
     background-color: #f1f1f1;
   }
 
-.navbar-light .navbar-nav .nav-link.active,
+  .container {
+
+    width: 100%; /* Le contenu occupe toute la largeur de la page */
+    max-width: 100%; /* Assurez-vous que la largeur ne dépasse pas la largeur de la fenêtre */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+  }
+
+
+  .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show {
   color: #E16120 !important; // Utilisez votre couleur personnalisée
   font-weight: bold;
 }
+
+
