@@ -1,11 +1,19 @@
 .custom-navbar {
     width: 100%;
+    background-color: #00bfff !important;
     border-radius: 0 0 20px 20px;
-    background-color: #00BFFF !important;
   }
 
   .navbar-light .navbar-nav .nav-link.active,
   .navbar-light .navbar-nav .nav-link.show {
     color: red !important;
     font-weight: bold;
+  }
+
+  .nav-item.dropdown {
+    position: relative;
+  }
+
+  .nav-item.dropdown .nav-link {
+    cursor: pointer;
   }

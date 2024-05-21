@@ -1,26 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.scss";
 import { NavLink, useLocation } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import DropdownMenu from "./DropdownMenu";
 
 function CustomNavbar() {
   const location = useLocation();
+  const [showDropdown, setShowDropdown] = useState(false);
+
   return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-    //   bg="light"
-    //   variant="light"
-      className="custom-navbar"
-    >
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="custom-navbar">
       <Container fluid>
-        <Navbar.Brand
-          as={NavLink}
-          to="/"
-          className={location.pathname !== "/" ? "active" : ""}
-        >
+        <Navbar.Brand as={NavLink} to="/" className={location.pathname !== "/" ? "active" : ""}>
           LyonEat
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -30,11 +23,22 @@ function CustomNavbar() {
               Accueil
             </Nav.Link>
             <Nav.Link as={NavLink} to="/recettes" activeClassName="active">
-              Liste des recettes
+              Toutes les recettes
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/categories" activeClassName="active">
-              Recettes par catégories
-            </Nav.Link>
+            <div
+              className="nav-item dropdown"
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              <span className="nav-link dropdown-toggle">
+                Liste des Catégories
+              </span>
+              {showDropdown && (
+                <div className="dropdown-menu-custom">
+                  <DropdownMenu />
+                </div>
+              )}
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
