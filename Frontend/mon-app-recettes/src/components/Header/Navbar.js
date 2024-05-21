@@ -11,7 +11,7 @@ function CustomNavbar() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="custom-navbar">
+    <Navbar collapseOnSelect expand="lg" className="custom-navbar">
       <Container fluid>
         <Navbar.Brand as={NavLink} to="/" className={location.pathname !== "/" ? "active" : ""}>
           LyonEat
@@ -34,7 +34,7 @@ function CustomNavbar() {
                 Liste des Catégories
               </span>
               {showDropdown && (
-                <div className="dropdown-menu-custom">
+                <div className="menu-custom">
                   <DropdownMenu />
                 </div>
               )}

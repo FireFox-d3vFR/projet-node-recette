@@ -31,7 +31,7 @@ function DropdownMenu() {
 
   return (
     <div className="dropdown-menu-custom">
-      <div className="row">
+      <div className="row-custom">
         {categories.map((category) => (
           <div className="col-md-4" key={category._id}>
             <NavLink

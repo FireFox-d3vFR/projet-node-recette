@@ -1,19 +1,33 @@
 .custom-navbar {
     width: 100%;
-    background-color: #00bfff !important;
+    background-color: #0d6efd !important;
     border-radius: 0 0 20px 20px;
   }
 
-  .navbar-light .navbar-nav .nav-link.active,
-  .navbar-light .navbar-nav .nav-link.show {
-    color: red !important;
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show {
+color: red !important;
+font-weight: bold;
+}
+
+.nav-item.dropdown .nav-link {
+cursor: default;
+}
+
+a.navbar-brand {
+    color: #fff;
     font-weight: bold;
-  }
+    letter-spacing: 0.2vh;
+}
 
-  .nav-item.dropdown {
-    position: relative;
-  }
+a.nav-link, span.nav-link {
+    color: #fff;
+}
 
-  .nav-item.dropdown .nav-link {
-    cursor: pointer;
-  }
+span.nav-link:focus {
+    color: #fff !important;
+}
+
+span.navbar-toggler-icon {
+    color: #fff;
+}
