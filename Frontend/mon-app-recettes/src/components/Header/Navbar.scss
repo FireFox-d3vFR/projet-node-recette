@@ -1,11 +1,11 @@
 .custom-navbar {
+    width: 100%;
     border-radius: 0 0 20px 20px;
     background-color: #00BFFF !important;
   }
 
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show {
-  color: red !important; // Utilisez votre couleur personnalisée
-  font-weight: bold;
-}
-
+  .navbar-light .navbar-nav .nav-link.active,
+  .navbar-light .navbar-nav .nav-link.show {
+    color: red !important;
+    font-weight: bold;
+  }

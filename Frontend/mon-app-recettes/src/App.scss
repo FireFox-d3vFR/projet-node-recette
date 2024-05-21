@@ -254,33 +254,27 @@
 // }
 
 // Custom
+// Custom
 body {
     background-color: #f8f9fa;
     color: #333;
+    margin: 0;
+    padding: 0;
+    width: 100%; // Utiliser 100% pour la pleine largeur
   }
 
-  .navbar {
-    margin-bottom: 20px;
-  }
-
-  footer {
-    margin-top: 20px;
-    padding: 10px 0;
-    background-color: #f1f1f1;
-  }
-
-  .container {
-
-    width: 100%; /* Le contenu occupe toute la largeur de la page */
-    max-width: 100%; /* Assurez-vous que la largeur ne dépasse pas la largeur de la fenêtre */
-    margin: 0 auto; /* Centre le contenu horizontalement */
-  }
-
-
-  .navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show {
-  color: #E16120 !important; // Utilisez votre couleur personnalisée
-  font-weight: bold;
+.navbar {
+margin-bottom: 20px;
 }
 
+footer {
+margin-top: 20px;
+padding: 10px 0;
+background-color: #f1f1f1;
+}
 
+.app-container {
+width: 100%;
+margin: 0;
+padding: 0;
+}

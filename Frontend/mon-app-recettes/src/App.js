@@ -10,7 +10,7 @@ import CustomNavbar from "./components/Header/Navbar";
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="app-container" style={{width: "100%"}}>
         <CustomNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
