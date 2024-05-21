@@ -1,0 +1,49 @@
+.my-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .card {
+    transition: transform 0.2s;
+    height: 100%; /* S'assurer que toutes les cartes prennent la pleine hauteur disponible */
+    display: flex;
+    flex-direction: column; /* Assurer que les éléments sont en colonne */
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-img-top {
+    height: 200px; /* Fixer une hauteur pour les images */
+    object-fit: cover; /* S'assurer que les images couvrent bien l'espace sans être déformées */
+  }
+
+  .card-body {
+    flex: 1; /* Prendre tout l'espace disponible pour le corps de la carte */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Assurer que le bouton est aligné en bas */
+  }
+
+  .card-title,
+  .card-text {
+    margin-bottom: 0.5rem;
+  }
+
+  .card-text {
+    flex: 1; /* Prendre tout l'espace disponible pour le texte */
+    overflow: hidden; /* Cacher tout débordement */
+    text-overflow: ellipsis; /* Ajouter des points de suspension pour le texte débordant */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limiter le nombre de lignes de texte */
+    -webkit-box-orient: vertical;
+  }
+
+  .btn-primary {
+    margin-top: auto; /* S'assurer que le bouton est aligné en bas */
+  }
