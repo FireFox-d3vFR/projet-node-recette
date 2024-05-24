@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import "./Recette.scss";
+import "./assets/Recipe.scss";
 
 function Recette() {
     const { id } = useParams();

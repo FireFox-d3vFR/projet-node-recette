@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import ListeRecettes from "./components/ListeRecettes";
-import Recette from "./components/Recette";
+import AllRecipes from "./Pages/Recettes";
+import Recipe from "./Pages/Recette";
 import "./App.scss";
-import Footer from "./components/Footer";
-import CustomNavbar from "./components/Header/Navbar";
+import Footer from "./components/Footer/Footer";
+import CustomNavbar from "./components/Header/Navbar/NavbarMenu";
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <CustomNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/recettes" element={<ListeRecettes />} />
-          <Route path="/recettes/:id" element={<Recette />} />
+          <Route path="/recettes" element={<AllRecipes />} />
+          <Route path="/recettes/:id" element={<Recipe />} />
         </Routes>
         <Footer />
       </div>

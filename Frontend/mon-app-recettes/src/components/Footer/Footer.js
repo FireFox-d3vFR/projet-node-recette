@@ -29,7 +29,7 @@ function Footer() {
       </Container>
       <div
         className="text-center py-3"
-        style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
+        style={{ backgroundColor: "#0d6efd", color: "#ffffff" }}
       >
         &copy; {new Date().getFullYear()} LyonEat
       </div>
