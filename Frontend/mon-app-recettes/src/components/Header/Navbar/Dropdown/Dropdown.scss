@@ -3,8 +3,7 @@
     margin: 0 !important;
     left: 0;
     top: 100%;
-    padding: 0;
-    width: 90%;
+    width: 100%;
     padding: 20px;
     background-color: #0d6dfdcc;
     border: 1px solid #0d6dfdcc;
@@ -28,8 +27,17 @@
     text-align: center;
     padding: 10px;
     color: #333;
+    margin-bottom: 10px;
   }
 
 a.dropdown-item {
     font-size: 18px;
+}
+
+a.dropdown-item:hover {
+  color: #ffffff;
+}
+
+a.dropdown-item:active {
+  color: red;
 }

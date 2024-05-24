@@ -31,7 +31,7 @@ function CustomNavbar() {
               onMouseLeave={() => setShowDropdown(false)}
             >
               <span className="nav-link dropdown-toggle">
-                Liste des Catégories
+                Recettes par catégories
               </span>
               {showDropdown && (
                 <div className="menu-custom">
