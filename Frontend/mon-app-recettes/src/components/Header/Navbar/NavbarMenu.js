@@ -39,7 +39,7 @@ function CustomNavbar({ handleLogout }) {
                 <Dropdown.Toggle as={Nav.Link} className="nav-link" id="profile-dropdown">
                   <i className="fas fa-user"></i> {/* Icône de profil */}
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
+                <Dropdown.Menu className="profile-dropdown-menu">
                   <Dropdown.Item as={NavLink} to="/profile">Mon Profil</Dropdown.Item>
                   <Dropdown.Item as={NavLink} to="/settings">Paramètres</Dropdown.Item>
                   <Dropdown.Item onClick={handleNavLinkClick}>Déconnexion</Dropdown.Item>
@@ -82,7 +82,7 @@ function CustomNavbar({ handleLogout }) {
                 <Dropdown.Toggle as={Nav.Link} className="nav-link" id="profile-dropdown">
                   <i className="fas fa-user"></i> {/* Icône de profil */}
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
+                <Dropdown.Menu className="profile-dropdown-menu">
                   <Dropdown.Item as={NavLink} to="/profile">Mon Profil</Dropdown.Item>
                   <Dropdown.Item as={NavLink} to="/settings">Paramètres</Dropdown.Item>
                   <Dropdown.Item onClick={handleNavLinkClick}>Déconnexion</Dropdown.Item>

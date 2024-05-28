@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Dropdown from "react-bootstrap/Dropdown";
 import "./Dropdown.scss";
 
 function DropdownMenu() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
     axios
@@ -21,6 +24,20 @@ function DropdownMenu() {
       });
   }, []);
 
+  // Fonction de rappel pour fermer le dropdown menu lorsqu'il est cliqué à l'extérieur
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+
   if (loading) {
     return <div>Chargement des categories...</div>;
   }
@@ -33,14 +50,13 @@ function DropdownMenu() {
     <div className="dropdown-menu-custom">
       <div className="row-custom">
         {categories.map((category) => (
-          <div className="col-md-4" key={category._id}>
-            <NavLink
-              to={`/categories/${category._id}`}
-              className="dropdown-item"
-            >
-              {category.name}
-            </NavLink>
-          </div>
+          <NavLink
+            key={category._id}
+            to={`/categories/${category._id}`}
+            className="dropdown-item"
+          >
+            {category.name}
+          </NavLink>
         ))}
       </div>
     </div>

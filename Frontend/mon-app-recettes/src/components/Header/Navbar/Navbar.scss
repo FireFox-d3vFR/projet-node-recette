@@ -1,63 +1,90 @@
-.custom-navbar .nav-link {
-    display: flex;
-    align-items: center;
-  }
-  
-  .custom-navbar .fa-user {
-    margin-left: 10px;
-    font-size: 1.2em;
-  }
-  
-  .custom-navbar .dropdown-menu {
-    right: 0;
-    left: auto;
-  }
-  
-.connexion-profile {
-  margin-right: 35px;
-}
-
 /* Navbar.scss */
+
+/* Décaler le bouton de bascule de la navbar à droite */
 .navbar-toggler {
   margin-left: auto;
 }
 
+/* Ajuster la position du menu déroulant du profil utilisateur */
 #profile-dropdown .dropdown-menu {
   right: 0;
   left: auto;
 }
 
-  
+/* Style général de la navbar */
 .custom-navbar {
-    width: 100%;
-    background-color: #0d6efd !important;
-    border-radius: 0 0 20px 20px;
-  }
+  width: 100%;
+  background-color: #0d6efd !important;
+  border-radius: 0 0 20px 20px;
+}
 
+/* Style des liens actifs dans la navbar */
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show {
-color: red !important;
-font-weight: bold;
+  color: red !important;
+  font-weight: bold;
 }
 
+/* Style du lien de dropdown */
 .nav-item.dropdown .nav-link {
-cursor: default;
+  cursor: default;
 }
 
+/* Style de la marque de la navbar */
 a.navbar-brand {
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 0.2vh;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.2vh;
 }
 
-a.nav-link, span.nav-link {
-    color: #fff;
+/* Style des liens de la navbar */
+a.nav-link,
+span.nav-link {
+  color: #fff;
 }
 
-span.nav-link:focus {
-    color: #fff !important;
-}
-
+/* Style de l'icône du bouton de bascule */
 span.navbar-toggler-icon {
-    color: #fff;
+  color: #fff;
+}
+
+/* Alignement des éléments dans les liens de la navbar */
+.custom-navbar .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+/* Style de l'icône utilisateur dans la navbar */
+.custom-navbar .fa-user {
+  margin-left: 10px;
+  font-size: 1.2em;
+}
+
+/* Ajustements du menu déroulant du profil utilisateur */
+.custom-navbar .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+/* Style du menu déroulant pour le profil utilisateur */
+.profile-dropdown-menu {
+  position: absolute !important; /* Position absolue pour se superposer */
+  z-index: 1050; /* Z-index élevé pour se superposer à la navbar */
+  right: 0; /* Aligner à droite */
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des éléments du menu déroulant du profil utilisateur */
+.profile-dropdown-menu .dropdown-item {
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style du survol des éléments du menu déroulant du profil utilisateur */
+.profile-dropdown-menu .dropdown-item:hover {
+  color: #ffffff;
+  background-color: #0d6efd; /* Utiliser la même couleur de survol que le login/membre */
 }
