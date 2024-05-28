@@ -1,5 +1,6 @@
 const membreService = require("../services/membresServices");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const getMembres = async (req, res) => {
   try {
@@ -51,10 +52,13 @@ const getMembreByEmailAndPassword = async (req, res) => {
     }
     const match = await bcrypt.compare(password, membre.password);
     if (match) {
+      const token = jwt.sign({id: membre._id}, process.env.SECRET_KEY, {
+        expiresIn: '1h',
+      });
       res.status(200).json({
         status: 200,
-        data: membre,
-        message: "Membre récupéré avec succès",
+        data: {membre, token},
+        message: "Connexion réussie",
       });
     } else {
       res.status(401).json({

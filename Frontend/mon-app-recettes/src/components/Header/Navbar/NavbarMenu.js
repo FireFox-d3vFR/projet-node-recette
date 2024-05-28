@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.scss";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import DropdownMenu from "./Dropdown/DropdownMenu";
 
-function CustomNavbar() {
+function CustomNavbar({ handleLogout }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Mettre à jour isAuthenticated en fonction de la présence du token
+    const isAuthenticated = !!localStorage.getItem("token");
+    setIsAuthenticated(isAuthenticated);
+  }, []);
+
+  const handleNavLinkClick = () => {
+    if (isAuthenticated) {
+      console.log("Logging out");
+      handleLogout();
+      setIsAuthenticated(false);
+      navigate("/connexion");
+    }
+  }
 
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar">
@@ -39,6 +56,11 @@ function CustomNavbar() {
                 </div>
               )}
             </div>
+          </Nav>
+          <Nav>
+            <Nav.Link as={NavLink} to="/connexion" onClick={handleNavLinkClick} className="btn btn-outline-primary">
+              {isAuthenticated ? "Déconnexion" : "Connexion"}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
