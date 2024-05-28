@@ -20,6 +20,7 @@ function Connexion() {
       localStorage.setItem("membre", JSON.stringify(membre));
       // Rediriger vers la page d'accueil ou une autre page protégée
       navigate("/");
+      window.location.reload(); // Rafraîchir la page après la connexion
     } catch (error) {
       setError("Erreur de connexion. Veuillez vérifier vos identifiants.");
     }

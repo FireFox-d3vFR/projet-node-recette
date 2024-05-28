@@ -9,17 +9,22 @@ import CustomNavbar from "./components/Header/Navbar/NavbarMenu";
 import "./App.scss";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // État initial non authentifié
+  const [membre, setMembre] = useState(JSON.parse(localStorage.getItem("membre")));
+
+  const handleLogout = () => {
+    localStorage.removeItem("membre");
+    setMembre(null);
+  };
 
   return (
     <Router>
-      <div className="app-container" style={{width: "100%"}}>
-        <CustomNavbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+      <div className="app-container" style={{ width: "100%" }}>
+        <CustomNavbar handleLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
+          <Route path="/" element={<Home membre={membre} />} />
           <Route path="/recettes" element={<AllRecipes />} />
           <Route path="/recettes/:id" element={<Recipe />} />
-          <Route path="/connexion" element={<Connexion setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path="/connexion" element={<Connexion />} />
         </Routes>
         <Footer />
       </div>

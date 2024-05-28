@@ -3,10 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
-function Home() { // Supprimez simplement la déclaration de la prop ici
+function Home({ membre }) {
   const [categories, setCategories] = useState([]);
   const [recettes, setFeaturedRecipes] = useState([]);
-  const membre = JSON.parse(localStorage.getItem("membre"));
 
   useEffect(() => {
     // Charger toutes les catégories

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Navbar.scss";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,23 +9,16 @@ import DropdownMenu from "./Dropdown/DropdownMenu";
 function CustomNavbar({ handleLogout }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const isAuthenticated = !!localStorage.getItem("membre");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Mettre à jour isAuthenticated en fonction de la présence du token
-    const isAuthenticated = !!localStorage.getItem("token");
-    setIsAuthenticated(isAuthenticated);
-  }, []);
 
   const handleNavLinkClick = () => {
     if (isAuthenticated) {
-      console.log("Logging out");
       handleLogout();
-      setIsAuthenticated(false);
       navigate("/connexion");
+      window.location.reload(); // Rafraîchir la page après la déconnexion
     }
-  }
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar">
