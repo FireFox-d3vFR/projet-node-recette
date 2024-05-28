@@ -11,7 +11,22 @@
   .custom-navbar .dropdown-menu {
     right: 0;
     left: auto;
-  }  
+  }
+  
+.connexion-profile {
+  margin-right: 35px;
+}
+
+/* Navbar.scss */
+.navbar-toggler {
+  margin-left: auto;
+}
+
+#profile-dropdown .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
   
 .custom-navbar {
     width: 100%;

@@ -32,7 +32,27 @@ function CustomNavbar({ handleLogout }) {
         <Navbar.Brand as={NavLink} to="/" className={location.pathname !== "/" ? "active" : ""}>
           LyonEat
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <div className="d-flex align-items-center ms-auto">
+          <Nav className="d-lg-none"> {/* Visible uniquement sur petit écran */}
+            {isAuthenticated ? (
+              <Dropdown align="end" show={showProfileDropdown} onToggle={handleProfileClick}>
+                <Dropdown.Toggle as={Nav.Link} className="nav-link" id="profile-dropdown">
+                  <i className="fas fa-user"></i> {/* Icône de profil */}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={NavLink} to="/profile">Mon Profil</Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to="/settings">Paramètres</Dropdown.Item>
+                  <Dropdown.Item onClick={handleNavLinkClick}>Déconnexion</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            ) : (
+              <Nav.Link as={NavLink} to="/connexion" className="btn btn-outline-primary">
+                Connexion
+              </Nav.Link>
+            )}
+          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-2" /> {/* Bouton Toggle */}
+        </div>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/" exact activeClassName="active">
@@ -56,7 +76,7 @@ function CustomNavbar({ handleLogout }) {
               )}
             </div>
           </Nav>
-          <Nav>
+          <Nav className="d-none d-lg-flex ms-auto"> {/* Visible uniquement sur grand écran */}
             {isAuthenticated ? (
               <Dropdown align="end" show={showProfileDropdown} onToggle={handleProfileClick}>
                 <Dropdown.Toggle as={Nav.Link} className="nav-link" id="profile-dropdown">
