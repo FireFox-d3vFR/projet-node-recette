@@ -6,6 +6,7 @@ import Recipe from "./Pages/Recette";
 import Connexion from "./components/Login/Connexion";
 import Footer from "./components/Footer/Footer";
 import CustomNavbar from "./components/Header/Navbar/NavbarMenu";
+import Profile from "./Pages/Profile";
 import "./App.scss";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/recettes" element={<AllRecipes />} />
           <Route path="/recettes/:id" element={<Recipe />} />
           <Route path="/connexion" element={<Connexion />} />
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
         <Footer />
       </div>

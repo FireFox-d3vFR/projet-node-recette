@@ -4,12 +4,14 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import Dropdown from "react-bootstrap/Dropdown";
 import DropdownMenu from "./Dropdown/DropdownMenu";
 
 function CustomNavbar({ handleLogout }) {
   const location = useLocation();
   const navigate = useNavigate();
   const isAuthenticated = !!localStorage.getItem("membre");
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleNavLinkClick = () => {
@@ -18,6 +20,10 @@ function CustomNavbar({ handleLogout }) {
       navigate("/connexion");
       window.location.reload(); // Rafraîchir la page après la déconnexion
     }
+  };
+
+  const handleProfileClick = () => {
+    setShowProfileDropdown(!showProfileDropdown);
   };
 
   return (
@@ -51,9 +57,22 @@ function CustomNavbar({ handleLogout }) {
             </div>
           </Nav>
           <Nav>
-            <Nav.Link as={NavLink} to="/connexion" onClick={handleNavLinkClick} className="btn btn-outline-primary">
-              {isAuthenticated ? "Déconnexion" : "Connexion"}
-            </Nav.Link>
+            {isAuthenticated ? (
+              <Dropdown align="end" show={showProfileDropdown} onToggle={handleProfileClick}>
+                <Dropdown.Toggle as={Nav.Link} className="nav-link" id="profile-dropdown">
+                  <i className="fas fa-user"></i> {/* Icône de profil */}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={NavLink} to="/profile">Mon Profil</Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to="/settings">Paramètres</Dropdown.Item>
+                  <Dropdown.Item onClick={handleNavLinkClick}>Déconnexion</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            ) : (
+              <Nav.Link as={NavLink} to="/connexion" className="btn btn-outline-primary">
+                Connexion
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,3 +1,18 @@
+.custom-navbar .nav-link {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-navbar .fa-user {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  
+  .custom-navbar .dropdown-menu {
+    right: 0;
+    left: auto;
+  }  
+  
 .custom-navbar {
     width: 100%;
     background-color: #0d6efd !important;
