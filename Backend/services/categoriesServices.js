@@ -31,11 +31,39 @@ const deleteCategories = async (query) => {
     return Categorie.deleteMany(query);
 }
 
+// Obtenir les catégories populaires
+const getPopularCategories = async () => {
+    return Categorie.find().sort({nombre_de_favoris: -1}).limit(3);
+}
+
+const toggleFavorite = async (categoryId, membreId) => {
+    const categorie = await Categorie.findById(categoryId);
+    if (!categorie) {
+        throw new Error('Catégorie non trouvée');
+    }
+
+    const index = categorie.favoris.indexOf(membreId);
+    if (index === -1) {
+        // Ajouter aux favoris
+        categorie.favoris.push(membreId);
+        categorie.nombre_de_favoris += 1;
+    } else {
+        // Retirer des favoris
+        categorie.favoris.splice(index, 1);
+        categorie.nombre_de_favoris -= 1;
+    }
+
+    await categorie.save();
+    return categorie;
+};
+
 module.exports = {
     getCategories,
     getCategorie,
     createCategorie,
     updateCategorie,
     deleteCategorie,
-    deleteCategories
+    deleteCategories,
+    getPopularCategories,
+    toggleFavorite
 };

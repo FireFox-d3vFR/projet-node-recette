@@ -1,18 +1,30 @@
 import React from "react";
+import {Container, Row, Col, Card} from "react-bootstrap";
+import "./assets/Profile.scss";
 
 function Profile() {
     const membre = JSON.parse(localStorage.getItem("membre"));
 
     return (
-        <div>
-            <h1>Mon Profil</h1>
-            {membre && (
-                <div>
-                    <p>Nom : {membre.firstName} {membre.lastName}</p>
-                    <p>Email : {membre.email}</p>
-                </div>
-            )}
-        </div>
+        <Container className="profile-container">
+            <Row className="justify-content-center">
+                <Col md={8} lg={6}>
+                    <Card className="profile-card">
+                        <Card.Header as="h1" className="text-center">Mon Profil</Card.Header>
+                        {membre && (
+                            <Card.Body>
+                                <Card.Text>
+                                    <strong>Nom :</strong> {membre.firstName} {membre.lastName}
+                                </Card.Text>
+                                <Card.Text>
+                                    <strong>Email :</strong> {membre.email}
+                                </Card.Text>
+                            </Card.Body>
+                        )}
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

@@ -1,4 +1,5 @@
 const recetteService = require("../services/recettesServices");
+const categorieService = require("../services/categoriesServices");
 
 const getRecettes = async (req, res) => {
     try {
@@ -69,6 +70,31 @@ const deleteRecettes = async (req, res) => {
     }
 };
 
+const incrementCategoryFavorites = async (req, res) => {
+    try {
+        console.log("Request received to increment favorites for category ID:", req.params.categoryId);
+        const category = await categorieService.getCategorie(req.params.categoryId);
+        if (!category) {
+            return res.status(404).json({ message: "Catégorie non trouvée" });
+        }
+        console.log("Current category data:", category);
+        category.nombre_de_favoris += 1;
+        await category.save();
+        res.status(200).json({
+            status: 200,
+            data: category,
+            message: "Nombre de favoris mis à jour"
+        });
+    } catch (e) {
+        console.error("Error while incrementing favorites:", e);
+        res.status(400).json({
+            status: 400,
+            message: e.message
+        });
+    }
+};
+
+
 module.exports = {
     getRecette,
     getRecettes,
@@ -76,6 +102,7 @@ module.exports = {
     createRecette,
     updateRecette,
     deleteRecette,
-    deleteRecettes
+    deleteRecettes,
+    incrementCategoryFavorites
 };
 

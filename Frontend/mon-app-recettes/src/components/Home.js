@@ -6,15 +6,21 @@ import "./Home.scss";
 function Home({ membre }) {
   const [categories, setCategories] = useState([]);
   const [recettes, setFeaturedRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Charger toutes les catégories
+    // Charger les catégories populaires
     axios
-      .get(`/api/categorie/categories`)
-      .then((response) => setCategories(response.data.data))
-      .catch((error) =>
-        console.error("Erreur lors de la récupération des catégories", error)
-      );
+      .get("/api/categorie/categories/populaires")
+      .then((response) => {
+          setCategories(response.data.data);
+          setLoading(false);
+      })
+      .catch((error) => {
+        setError("Erreur lors de la récupération des catégories populaires");
+        setLoading(false);
+      });
 
     // Charger les recettes en vedette
     axios
@@ -27,9 +33,13 @@ function Home({ membre }) {
         )
       );
   }, []);
+  
+  if (loading) {
+    return <div>Chargement des catégories populaires...</div>;
+  }
 
-  if (!categories.length) {
-    return <div>Chargement des catégories...</div>;
+  if (error) {
+    return <div>{error}</div>;
   }
 
   if (!recettes.length) {

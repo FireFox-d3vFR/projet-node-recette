@@ -109,6 +109,41 @@ const deleteCategories = async (req, res) => {
   }
 };
 
+const getPopularCategories = async (req, res) => {
+  try {
+    const popularCategories = await categorieService.getPopularCategories();
+    res.status(200).json({
+      status: 200,
+      data: popularCategories,
+      message: "Catégorie populaires récupérées avec succès"
+    });
+  } catch (e) {
+    res.status(400).json({
+      status: 400,
+      message: e.message
+    });
+  }
+}
+
+const toggleFavorite = async (req, res) => {
+  const { categoryId } = req.params;
+  const { membreId } = req.body;
+
+  try {
+      const updatedCategory = await categorieService.toggleFavorite(categoryId, membreId);
+      res.status(200).json({
+        status: 200,
+        data: updatedCategory,
+        message: "Favori mis à jour avec succès"
+      });
+  } catch (e) {
+      res.status(400).json({
+          status: 400,
+          message: e.message
+      });
+  }
+};
+
 module.exports = {
   getCategories,
   getCategorie,
@@ -116,4 +151,6 @@ module.exports = {
   updateCategorie,
   deleteCategorie,
   deleteCategories,
+  getPopularCategories,
+  toggleFavorite
 };
